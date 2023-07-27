@@ -895,7 +895,7 @@ class Stitcher:
         host_environment.update(embedded_function.__globals__)
         cells = embedded_function.__closure__
         cell_names = embedded_function.__code__.co_freevars
-        host_environment.update({var: cells[index] for index, var in enumerate(cell_names)})
+        host_environment.update({var: cells[index].cell_contents for index, var in enumerate(cell_names)})
 
         # Find out how indented we are.
         initial_whitespace = re.search(r"^\s*", source_code).group(0)
